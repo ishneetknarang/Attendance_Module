@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container align-middle"  xmlns="http://www.w3.org/1999/html">
+     <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <form role="form" method ="post" action="/show_attendance_by_date/">
+                    {% csrf_token %}
+                    <div class="form-group">
+
+                        <label for="date">
+                            From
+                        </label>
+                        <input type="date" class="form-control" id="date" name="date" required="True"/>
+                    </div>
+                    <div class="form-group">
+
+
+                        <p class="help-block">
+                             Select Date to see attendance
+                        </p>
+                    </div>
+                    <input type="submit"  class="btn btn-primary" />
+                </form>
+            </div>
+        </div>
+    </div><br/><br/>
+    {% if students  %}
+    <div class="container-fluid" >
+        <div class="row">
+            <div class="col-md-12" >
+                <table class="table table-strip text-justify">
+                    <thead>
+                        <tr>
+                            <th>
+                                Student id
+                            </th>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Presence
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% csrf_token %}
+                    {% for student in students %}
+                        <tr>
+                            <td>
+                                {{student.student.student_id}}
+                            </td>
+                            <td>
+                                {{ student.student.first_name}}&nbsp;{{ student.student.last_name}}
+                            </td>
+                            <td>
+                                {% if student.status %}
+                                Present
+                                {% else %}
+                                Absent
+                                {% endif %}
+
+                            </td>
+
+                        </tr>
+                    {% endfor %}
+
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container align-middle"  xmlns="http://www.w3.org/1999/html">
+     <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <form role="form" method ="post" action="/show_attendance_by_student/">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <p class="help-block">
+                         Select Student to see attendance
+                    </p>
+                    <input type="submit" value="submit" class="btn btn-primary" />
+                </form>
+            </div>
+        </div>
+    </div><br/><br/>
+    {% if attendances  %}
+    <div class="container-fluid" >
+        <div class="row">
+            <div class="col-md-12" >
+                <table class="table table-strip text-justify">
+                    <thead>
+                        <tr>
+                            <th>
+                                Date
+                            </th>
+                            <th>
+                                Presence
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% csrf_token %}
+                    {% for attendance in attendances %}
+                        <tr>
+                            <td>
+                                {{attendance.date}}
+                            </td>
+                            <td>
+                                {% if attendance.status %}
+                                Present
+                                {% else %}
+                                Absent
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

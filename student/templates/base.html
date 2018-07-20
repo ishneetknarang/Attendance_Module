@@ -1,0 +1,48 @@
+{% extends "admin/base_site.html" %}
+
+{% block title %}{{ title }} | {{ site_title|default:_('JSS ATTENDANCE PORTAL') }}{% endblock %}
+
+{% block branding %}
+<h4 id="site-name" >{{ site_header|default:_('JSS ATTENDANCE PORTAL') }}</h4>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
+
+ {% block usertools %}
+        <div id="user-tools">
+            {% block welcome-msg %}
+                Welcome,
+                <strong>{{request.session.faculty_user}}</strong>.
+            {% endblock %}
+            {% block userlinks %}
+                {% if site_url %}
+                    <a href="">View site</a> /
+                {% endif %}
+
+
+                <a href="/logout/">Log out</a>
+            {% endblock %}
+        </div>
+{% endblock %}
+{% block breadcrumbs %}
+    <div class="breadcrumbs">
+    <a href="/login/">Attendance</a> |
+        <a href="/show_attendance_by_date/">Attendance by Date</a> |
+        <a href="/show_attendance_by_student/">Attendance by Student</a> |
+        <a href="/show_attendance_summary/">Attendance Summary</a> |
+
+    {% if title %} &rsaquo; {{ title }}{% endif %}
+    </div>
+    {% endblock %}
+{% block extrahead %}
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+{% endblock %}
