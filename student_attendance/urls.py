@@ -26,4 +26,5 @@ urlpatterns = [
     url(r'^show_attendance_by_date/', views.show_attendance_by_date),
     url(r'^show_attendance_by_student/', views.show_attendance_by_student),
     url(r'^show_attendance_summary/', views.show_attendance_summary),
+    url(r'^student_details/1/(?P<student_id>\d+)/$',views.student_details,name='urlname'),
 ]

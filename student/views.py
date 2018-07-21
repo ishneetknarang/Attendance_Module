@@ -99,3 +99,7 @@ def show_attendance_summary(request):
         return render(request, 'attendance_summary.html', {'students': students,'attendance_dict':attendance_dict,'form':form,})
     form = DateRangeForm()
     return render(request, 'attendance_summary.html',{'form':form})
+
+def student_details(request,student_id):
+    student=Student.objects.get(pk=student_id)
+    return render(request,'student_detail.html',{'student':student})
