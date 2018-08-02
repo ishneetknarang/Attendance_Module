@@ -10,3 +10,4 @@ def get_value_from_dict(dictionary, key):
 
 
 register.filter('get_value_from_dict', get_value_from_dict)
+
