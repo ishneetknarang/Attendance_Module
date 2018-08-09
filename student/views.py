@@ -18,32 +18,32 @@ def log_in_faculty(request):
         message="Attendance is already taken"
         return render(request, 'attendance.html', {'status': 'login', 'message': message, })
 
-    elif request.method == 'POST':
-        form = LogInForm(request.POST)
-        if form.is_valid():
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
-            emp = list(Faculty.objects.filter(username=username,password=password))
-            if len(emp) > 0:
-                print( username, password,repr(emp[0]) )
-                request.session['faculty_user']= username
-                currentdate=date.today()
-                att_obj=Attendance.objects.filter(date=currentdate)
+    # elif request.method == 'POST':
+    #     form = LogInForm(request.POST)
+    #     if form.is_valid():
+    #         username = form.cleaned_data['username']
+    #         password = form.cleaned_data['password']
+    #         emp = list(Faculty.objects.filter(username=username,password=password))
+    #         if len(emp) > 0:
+    #             print( username, password,repr(emp[0]) )
+    #             request.session['faculty_user']= username
+    #             currentdate=date.today()
+    #             att_obj=Attendance.objects.filter(date=currentdate)
 
-                if att_obj:
-                    pass
-                else :
-                    students = Student.objects.all()
-                    return render(request, 'attendance.html', {'status': 'login', 'students': students, })
-                message="Attendance is already taken"
-                messages.info(request,'Successfully login '+emp[0].first_name)
-                return render(request, 'attendance.html', {'status': 'login', 'message': message, })
-            else:
-                messages.error( request, ' Invalid username and password ' )
-                return HttpResponseRedirect('/')
-        else:
-            messages.error( request, ' Invalid username and password ' )
-            return HttpResponseRedirect( '/' )
+    #             if att_obj:
+    #                 pass
+    #             else :
+    #                 students = Student.objects.all()
+    #                 return render(request, 'attendance.html', {'status': 'login', 'students': students, })
+    #             message="Attendance is already taken"
+    #             messages.info(request,'Successfully login '+emp[0].first_name)
+    #             return render(request, 'attendance.html', {'status': 'login', 'message': message, })
+    #         else:
+    #             messages.error( request, ' Invalid username and password ' )
+    #             return HttpResponseRedirect('/')
+    #     else:
+    #         messages.error( request, ' Invalid username and password ' )
+    #         return HttpResponseRedirect( '/' )
     else:
         form = LogInForm()
         return render( request, 'login.html', {'status': 'logout', 'form': form} )
