@@ -5,6 +5,10 @@
 	<form action="/save_attendance/" method="post">
 	<div class="row">
 		<div class="col-md-12" >
+			<h1>
+				{{message}}
+			</h1>
+			{% if students %}
 			<table class="table table-strip text-justify">
 				<thead>
 					<tr>
@@ -42,6 +46,7 @@
 
 			</table>
             <input type="submit" class="btn btn-danger" value="submit" >
+            {% endif %}
 
 		</div>
 	</div>
@@ -49,3 +54,6 @@
 </div>
 </div>
 {% endblock %}
+
+
+
