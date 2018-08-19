@@ -24,7 +24,7 @@ class Faculty(models.Model):
     # created_date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return self.first_name +" "+self.last_name
+        return self.faculty.first_name +" "+self.faculty.last_name
 
     class Meta:
         verbose_name_plural = "Faculties"
