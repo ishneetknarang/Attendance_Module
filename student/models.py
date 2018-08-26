@@ -17,11 +17,11 @@ class Student(models.Model):
 class Faculty(models.Model):
     # first_name = models.CharField(max_length = 100)
     faculty = models.OneToOneField(User, on_delete=models.CASCADE)
+    created_date = models.DateTimeField(default=timezone.now)
     # last_name = models.CharField(max_length = 100)
     # faculty_id = models.CharField(max_length = 100)
     # username = models.CharField(max_length = 100,default=faculty_id)
     # password = models.CharField(max_length = 50)
-    # created_date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.faculty.first_name +" "+self.faculty.last_name

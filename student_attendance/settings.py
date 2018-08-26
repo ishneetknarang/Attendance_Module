@@ -24,7 +24,6 @@ SECRET_KEY = 'pz1x%j)2)n%%ma6-&7v689)=r3py33(mxl97s-p2hje7p*$!f4'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-LOGIN_REDIRECT_URL='url(r'^save_attendance/', views.save_attendance)'
 
 ALLOWED_HOSTS = []
 
@@ -121,3 +120,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+LOGIN_REDIRECT_URL = '/home/'
+
+
