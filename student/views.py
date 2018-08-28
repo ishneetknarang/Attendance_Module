@@ -98,11 +98,10 @@ def show_attendance_summary(request):
         dates_list = []
         dates_list.extend([datetime.strptime(date_range[0], '%d/%m/%Y').date(),datetime.strptime(date_range[1], '%d/%m/%Y').date()])
         date_range = tuple(dates_list)
-        print('date_range:::::::',date_range )
+        
 
         attendances = Attendance.objects.filter(date__range=date_range, status=1).order_by('student')
         students = Student.objects.all()
-        print('attendances',str(attendances))
         attendance_dict ={}
         for attendance in attendances:
             if attendance.student in attendance_dict:
