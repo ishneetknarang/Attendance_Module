@@ -29,6 +29,7 @@ urlpatterns = [
     url(r'^show_attendance_by_date/', views.show_attendance_by_date),
     url(r'^show_attendance_by_student/', views.show_attendance_by_student),
     url(r'^show_attendance_summary/', views.show_attendance_summary),
+    url(r'^student_details/',views.student_details,name='urlname'),
     url(r'^student_details/(?P<student_id>[0-9]+)',views.student_details,name='urlname'),
 ]
 ##from django.contrib import admin

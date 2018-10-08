@@ -117,15 +117,20 @@ def show_attendance_summary(request):
     form = DateRangeForm()
     return render(request, 'attendance_summary.html', {'form': form})
 
-def student_details(request,student_id):
+def student_details(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect('/login/')
     elif request.method == 'POST':
-        form = StudentLookUpForm(request.POST)
-        student = request.POST.get('student')
+        # form = StudentLookUpForm(request.POST)
+        student_id = request.POST.get('student')
+        print(student_id)
         #attendances = Attendance.objects.filter(student=student).order_by('-date')
-        return render(request,'student_detail.html',{'student':student})
-    student=Student.objects.get(pk=student_id)
-    return render(request,'student_detail.html',{'student':student})
+        student=Student.objects.get(pk=student_id)
+        print(student.student_id)
+        print(student.created_date)
+        form = StudentLookUpForm()
+        return render(request,'student_detail.html',{'student':student,'form':form})
+    form = StudentLookUpForm()
+    return render(request,'student_detail.html',{'form':form})
 
     
