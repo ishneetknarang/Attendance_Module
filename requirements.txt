@@ -1,0 +1,5 @@
+Django==2.0.6
+django-bootstrap-daterangepicker==1.0.1
+python-dateutil==2.7.3
+pytz==2018.5
+six==1.11.0
